@@ -1,15 +1,38 @@
 :root {
-  --bg: #0a0e14;
-  --bg-raise: #10161f;
-  --bg-card: #121a25;
-  --border: #1f2b3a;
-  --text: #e6edf3;
-  --text-dim: #97a6b8;
-  --accent: #34d399;
-  --accent-dim: rgba(52, 211, 153, 0.12);
-  --accent-2: #38bdf8;
+  /* Light scope (default): warm, airy */
+  --bg: #faf8f4;
+  --bg-raise: #f3f0e9;
+  --bg-card: #ffffff;
+  --border: #e6e1d5;
+  --text: #222d3d;
+  --text-dim: #64748b;
+  --accent: #0f9d76;
+  --accent-dim: rgba(15, 157, 118, 0.1);
+  --accent-contrast: #ffffff;
+  --accent-2: #0284c7;
+  --accent-2-dim: rgba(2, 132, 199, 0.08);
+  --warm: #f59e0b;
+  --warm-dim: rgba(245, 158, 11, 0.12);
   --font-display: 'Space Grotesk', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
+}
+
+/* Dark scope: applied to header, hero, footer, and feature panels */
+.dark {
+  --bg: #141b28;
+  --bg-raise: #1b2434;
+  --bg-card: #1b2434;
+  --border: #2b3850;
+  --text: #eef2f7;
+  --text-dim: #9daebf;
+  --accent: #34d399;
+  --accent-dim: rgba(52, 211, 153, 0.13);
+  --accent-contrast: #08301f;
+  --accent-2: #38bdf8;
+  --accent-2-dim: rgba(56, 189, 248, 0.12);
+  --warm: #fbbf24;
+  --warm-dim: rgba(251, 191, 36, 0.14);
+  color: var(--text);
 }
 
 * {
@@ -92,14 +115,15 @@ section {
   padding: 12px 24px;
   border-radius: 8px;
   border: 1px solid transparent;
-  transition: transform 0.15s ease, background 0.15s ease;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn:hover { text-decoration: none; transform: translateY(-1px); }
 
 .btn-primary {
   background: var(--accent);
-  color: #06281c;
+  color: var(--accent-contrast);
+  box-shadow: 0 2px 8px rgba(15, 157, 118, 0.25);
 }
 
 .btn-ghost {
@@ -115,6 +139,7 @@ section {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 28px;
+  box-shadow: 0 1px 3px rgba(20, 27, 40, 0.05);
 }
 
 .card h3 { margin-top: 0; }
@@ -154,13 +179,17 @@ section {
   border-radius: 999px;
   background: var(--accent-dim);
   color: var(--accent);
-  border: 1px solid rgba(52, 211, 153, 0.25);
+  border: 1px solid transparent;
 }
 
 .chip-blue {
-  background: rgba(56, 189, 248, 0.1);
+  background: var(--accent-2-dim);
   color: var(--accent-2);
-  border-color: rgba(56, 189, 248, 0.25);
+}
+
+.chip-warm {
+  background: var(--warm-dim);
+  color: #b45309;
 }
 
 /* Forms */
@@ -181,7 +210,7 @@ section {
 .form-field input,
 .form-field select,
 .form-field textarea {
-  background: var(--bg-raise);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 8px;
   color: var(--text);

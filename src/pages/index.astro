@@ -42,7 +42,7 @@ const caseStudies = [
   title="Ishraq Alam | SDR who builds sales tech"
   description="Ishraq Alam: SDR at Nourish Care, builder of AI-powered prospecting tools, recognized for turning research into revenue. Portsmouth, UK."
 >
-  <section class="hero">
+  <section class="hero dark">
     <div class="container">
       <span class="eyebrow">Ishraq Alam · Portsmouth, UK</span>
       <h1>
@@ -106,7 +106,7 @@ const caseStudies = [
 
   <section class="enterprise-band">
     <div class="container">
-      <div class="card band-card">
+      <div class="card band-card dark">
         <div>
           <h2>Enterprise &amp; B2B campaigns</h2>
           <p class="lede">
@@ -123,8 +123,9 @@ const caseStudies = [
     .hero {
       padding: 110px 0 80px;
       background:
-        radial-gradient(ellipse 60% 50% at 70% 10%, rgba(52, 211, 153, 0.08), transparent),
-        radial-gradient(ellipse 50% 40% at 20% 90%, rgba(56, 189, 248, 0.06), transparent);
+        radial-gradient(ellipse 55% 45% at 75% 12%, rgba(52, 211, 153, 0.16), transparent),
+        radial-gradient(ellipse 45% 40% at 15% 88%, rgba(251, 191, 36, 0.1), transparent),
+        var(--bg);
     }
 
     .highlight { color: var(--accent); }
@@ -136,7 +137,14 @@ const caseStudies = [
       flex-wrap: wrap;
     }
 
-    .proof { padding-top: 0; }
+    .proof { padding-top: 56px; }
+
+    .proof .card {
+      border-top: 3px solid var(--accent);
+    }
+
+    .proof .card:nth-child(2) { border-top-color: var(--warm); }
+    .proof .card:nth-child(3) { border-top-color: var(--accent-2); }
 
     .studies { margin-top: 28px; }
 
@@ -168,7 +176,9 @@ const caseStudies = [
       color: var(--accent);
     }
 
-    .positioning { border-top: 1px solid var(--border); }
+    .positioning {
+      background: linear-gradient(135deg, var(--warm-dim), var(--accent-dim));
+    }
 
     .band-card {
       display: flex;
