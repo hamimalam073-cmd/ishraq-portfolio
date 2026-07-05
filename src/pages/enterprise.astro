@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import EnterpriseForm from '../components/EnterpriseForm';
+
+const verticals = [
+  {
+    title: 'Insurance',
+    body: 'High-volume outbound campaigns navigating regulated, compliance-heavy sales cycles.',
+  },
+  {
+    title: 'Home Improvement',
+    body: 'Appointment-setting campaigns converting cold leads into qualified in-home consultations.',
+  },
+  {
+    title: 'SaaS',
+    body: 'Client campaign work with Appcast, a recruitment marketing SaaS platform.',
+  },
+  {
+    title: 'IT Procurement',
+    body: 'Procurement telemarketing for AMS Networks, contributing to campaigns that helped close million-dollar IT contracts.',
+  },
+];
+---
+
+<Base
+  title="Enterprise & B2B Campaigns | Ishraq Alam"
+  description="Outbound campaign experience across insurance, home improvement, SaaS, and IT procurement, including campaigns behind six- and seven-figure closes."
+>
+  <section>
+    <div class="container">
+      <span class="eyebrow">Enterprise &amp; B2B campaigns</span>
+      <h1>Beyond SMB outreach: I've run the calls that close six and seven figures.</h1>
+      <p class="lede">
+        Before care-tech, I spent years in remote B2B telemarketing for US and Canadian
+        companies. Four verticals, four very different sales motions.
+      </p>
+      <div class="grid-2 verticals">
+        {verticals.map((v) => (
+          <div class="card">
+            <h3>{v.title}</h3>
+            <p>{v.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="inquiry">
+    <div class="container narrow">
+      <span class="eyebrow">Enterprise inquiry</span>
+      <h2>Have a campaign in mind?</h2>
+      <p class="lede">
+        Tell me about the market, the offer, and the volume. I'll tell you honestly
+        whether I'm the right person to run it.
+      </p>
+      <div class="card form-card">
+        <EnterpriseForm client:load />
+      </div>
+    </div>
+  </section>
+
+  <style>
+    section:first-of-type { padding-top: 80px; }
+
+    .verticals { margin-top: 40px; }
+
+    .verticals .card p { color: var(--text-dim); margin-bottom: 0; }
+
+    .inquiry { border-top: 1px solid var(--border); }
+
+    .form-card { margin-top: 24px; }
+  </style>
+</Base>

@@ -1,0 +1,185 @@
+---
+import Base from '../layouts/Base.astro';
+
+const proofPoints = [
+  {
+    title: 'Company-wide dashboard',
+    body: 'Built a live CQC data dashboard, now used company-wide at Nourish Care for AI-driven prospecting.',
+  },
+  {
+    title: 'AI Champion',
+    body: 'Named "AI Champion" by the CMO for bringing AI-assisted research into the sales workflow.',
+  },
+  {
+    title: 'Recognized performer',
+    body: 'SDR of the Quarter and Nourish Culture Award winner.',
+  },
+];
+
+const caseStudies = [
+  {
+    href: '/case-studies/cqc-dashboard/',
+    tag: 'Shipped · In use company-wide',
+    title: 'CQC Research Dashboard',
+    body: 'A React/TypeScript app on live CQC data that cut provider research from minutes to seconds and put real inspection facts in the first line of every email.',
+  },
+  {
+    href: '/case-studies/lead-enrichment/',
+    tag: 'In progress',
+    title: 'Lead Enrichment Pipeline',
+    body: 'A Python pipeline that joins the CQC and Companies House APIs to surface decision-makers for ~180 target accounts no list vendor covers.',
+  },
+  {
+    href: '/case-studies/competitive-intel/',
+    tag: 'Living document',
+    title: 'Competitive Intelligence Matrix',
+    body: 'An accuracy-verified comparison of Nourish against 9+ care-sector competitors, so every competitive conversation starts from facts, not folklore.',
+  },
+];
+---
+
+<Base
+  title="Ishraq Alam | SDR who builds sales tech"
+  description="Ishraq Alam: SDR at Nourish Care, builder of AI-powered prospecting tools, recognized for turning research into revenue. Portsmouth, UK."
+>
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">Ishraq Alam · Portsmouth, UK</span>
+      <h1>
+        I don't just hit quota.<br />
+        I build the systems that make quota <span class="highlight">easier to hit</span>.
+      </h1>
+      <p class="lede">
+        SDR at Nourish Care. Builder of AI-powered prospecting tools. Recognized for
+        turning research into revenue.
+      </p>
+      <div class="hero-actions">
+        <a href="/case-studies/" class="btn btn-primary">See the work</a>
+        <a href="/enterprise/" class="btn btn-ghost">Work with me</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="container grid-3">
+      {proofPoints.map((point) => (
+        <div class="card">
+          <h3>{point.title}</h3>
+          <p>{point.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <span class="eyebrow">Case studies</span>
+      <h2>Sales problems, solved like an engineer</h2>
+      <div class="grid-3 studies">
+        {caseStudies.map((study) => (
+          <a href={study.href} class="card study-card">
+            <span class="chip">{study.tag}</span>
+            <h3>{study.title}</h3>
+            <p>{study.body}</p>
+            <span class="read-more">Read the case study →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="positioning">
+    <div class="container narrow">
+      <span class="eyebrow">Why this combination matters</span>
+      <h2>A sales rep who builds sales tech</h2>
+      <p class="lede">
+        Most SDRs run the playbook. I rebuild it. From cold-calling scripts refined over
+        thousands of dials to a live data dashboard adopted across a UK SaaS company,
+        the pattern is the same: take a messy, manual process and turn it into a
+        repeatable system that the whole team benefits from.
+      </p>
+      <p>
+        <a href="/about/">More about my path from Bangladesh to Portsmouth →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="enterprise-band">
+    <div class="container">
+      <div class="card band-card">
+        <div>
+          <h2>Enterprise &amp; B2B campaigns</h2>
+          <p class="lede">
+            Beyond SMB outreach: I've run the calls that close six and seven figures,
+            across insurance, home improvement, SaaS, and IT procurement.
+          </p>
+        </div>
+        <a href="/enterprise/" class="btn btn-primary">Start a conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hero {
+      padding: 110px 0 80px;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 10%, rgba(52, 211, 153, 0.08), transparent),
+        radial-gradient(ellipse 50% 40% at 20% 90%, rgba(56, 189, 248, 0.06), transparent);
+    }
+
+    .highlight { color: var(--accent); }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .proof { padding-top: 0; }
+
+    .studies { margin-top: 28px; }
+
+    .study-card {
+      display: flex;
+      flex-direction: column;
+      color: var(--text);
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .study-card:hover {
+      text-decoration: none;
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .study-card .chip {
+      align-self: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .study-card p { color: var(--text-dim); }
+
+    .read-more {
+      margin-top: auto;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .positioning { border-top: 1px solid var(--border); }
+
+    .band-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+      background: linear-gradient(135deg, var(--bg-card), rgba(52, 211, 153, 0.06));
+    }
+
+    .band-card h2 { margin-bottom: 8px; }
+    .band-card .lede { margin: 0; }
+  </style>
+</Base>

@@ -1,0 +1,274 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const stack = [
+  'React',
+  'TypeScript',
+  'Netlify Serverless Functions',
+  'CQC API',
+  'AI-drafted outreach',
+];
+
+const steps = [
+  {
+    title: 'Search any registered provider',
+    body: 'Provider name search against the live CQC API. No more digging through the CQC website or stale spreadsheets.',
+  },
+  {
+    title: 'Serverless proxy keeps credentials safe',
+    body: 'Netlify functions hold the Ocp-Apim-Subscription-Key and proxy requests, so the API key never ships to the browser.',
+  },
+  {
+    title: 'Inspection data, structured for sellers',
+    body: 'Ratings, inspection history, and service types are pulled into a view designed around what an SDR needs in the 30 seconds before a call.',
+  },
+  {
+    title: 'Outreach Intelligence tab',
+    body: 'Auto-drafts personalised outreach grounded in the provider’s actual inspection data, so the research is already in the first line of the email.',
+  },
+];
+---
+
+<Base
+  title="CQC Research Dashboard Case Study | Ishraq Alam"
+  description="How a live CQC data dashboard cut care-provider research from minutes to seconds and became Nourish Care's proof-of-concept for AI-assisted prospecting."
+>
+  <article>
+    <section class="cs-hero">
+      <div class="container narrow">
+        <a href="/case-studies/" class="back">← All case studies</a>
+        <span class="eyebrow">Case study · Shipped &amp; in use company-wide</span>
+        <h1>CQC Research Dashboard</h1>
+        <p class="lede">
+          A live dashboard on Care Quality Commission data that replaced slow,
+          inconsistent manual research with instant, personalised outreach intelligence.
+          It became Nourish Care's internal proof-of-concept for AI-assisted prospecting.
+        </p>
+        <ul class="chips">
+          {stack.map((item) => <li class="chip chip-blue">{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="mockup-section">
+      <div class="container">
+        <div class="mockup" role="img" aria-label="Illustration of the CQC Research Dashboard interface">
+          <div class="mockup-titlebar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="mockup-title">CQC Research Dashboard</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-search">🔍 Search CQC-registered providers…</div>
+            <div class="mockup-tabs">
+              <span class="tab">Provider Profile</span>
+              <span class="tab">Inspection History</span>
+              <span class="tab active">Outreach Intelligence</span>
+            </div>
+            <div class="mockup-panel">
+              <div class="mockup-row"><span class="label">Provider</span> Willow Grange Care Home · Residential</div>
+              <div class="mockup-row"><span class="label">Latest rating</span> <span class="rating">Requires Improvement</span> · Safe: RI · Well-led: RI</div>
+              <div class="mockup-row draft">
+                <span class="label">Suggested opener</span>
+                "Noticed your March inspection flagged care-plan record keeping. Teams
+                using digital care planning typically close that gap before re-inspection…"
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-0">
+      <div class="container narrow">
+        <span class="eyebrow">The problem</span>
+        <h2>Research was the bottleneck, not effort</h2>
+        <p>
+          SDRs at Nourish needed fast, personalised research on CQC-registered care
+          providers before every call and email. The raw data existed: the Care Quality
+          Commission publishes ratings and inspection reports for every registered
+          provider in England. But getting to it meant manual lookups: slow,
+          inconsistent between reps, and impossible to do at the volume outbound requires.
+        </p>
+        <p>
+          The result was a familiar SDR trade-off: personalise deeply and send less, or
+          send more and sound generic. I wanted to delete the trade-off.
+        </p>
+      </div>
+    </section>
+
+    <section class="pb-0">
+      <div class="container narrow">
+        <span class="eyebrow">The build</span>
+        <h2>From API to first line of outreach</h2>
+      </div>
+      <div class="container">
+        <div class="grid-2 steps">
+          {steps.map((step, i) => (
+            <div class="card">
+              <span class="step-num">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container narrow">
+        <span class="eyebrow">The outcome</span>
+        <h2>Adopted company-wide, recognized by the CMO</h2>
+        <p>
+          The dashboard was adopted internally as Nourish's proof-of-concept for
+          AI-assisted prospecting, used across the company, not just by me. It earned
+          recognition from the CMO, who named me an <strong>"AI Champion"</strong> for
+          the work.
+        </p>
+        <p>
+          More important than the award: research that used to take minutes per provider
+          now takes seconds, and every rep's outreach opens with something true and
+          specific about the prospect.
+        </p>
+        <div class="cta-row">
+          <a href="/case-studies/lead-enrichment/" class="btn btn-ghost">Next: Lead Enrichment Pipeline →</a>
+          <a href="/enterprise/" class="btn btn-primary">Work with me</a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .cs-hero { padding-top: 80px; padding-bottom: 32px; }
+
+    .back {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+
+    .pb-0 { padding-bottom: 0; }
+
+    .mockup-section { padding: 24px 0 0; }
+
+    .mockup {
+      max-width: 860px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--bg-raise);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .mockup-titlebar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+
+    .mockup-title {
+      margin-left: 10px;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .mockup-body { padding: 20px; }
+
+    .mockup-search {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    .mockup-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 8px;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+    }
+
+    .tab.active {
+      color: var(--accent);
+      background: var(--accent-dim);
+      border-color: rgba(52, 211, 153, 0.3);
+    }
+
+    .mockup-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.92rem;
+    }
+
+    .mockup-row {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+
+    .mockup-row .label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+
+    .rating { color: #fbbf24; font-weight: 600; }
+
+    .mockup-row.draft {
+      border-color: rgba(52, 211, 153, 0.35);
+      font-style: italic;
+      color: var(--text-dim);
+    }
+
+    .steps { margin-top: 32px; }
+
+    .step-num {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+  </style>
+</Base>

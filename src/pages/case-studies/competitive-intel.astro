@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const stack = ['Feature scoring', 'Accuracy verification', 'Field intelligence'];
+---
+
+<Base
+  title="Competitive Intelligence Matrix Case Study | Ishraq Alam"
+  description="A living, accuracy-verified comparison of Nourish against 9+ care-sector competitors with a field-intelligence layer."
+>
+  <article>
+    <section class="cs-hero">
+      <div class="container narrow">
+        <a href="/case-studies/" class="back">← All case studies</a>
+        <span class="eyebrow">Case study · Living document</span>
+        <h1>Competitive Intelligence Matrix</h1>
+        <p class="lede">
+          A living comparison of Nourish against 9+ care-sector competitors, including
+          Roundsys, Birdie, Unique IQ, and PCS, built so every conversation about a
+          competitor starts from verified facts, not folklore.
+        </p>
+        <ul class="chips">
+          {stack.map((item) => <li class="chip chip-blue">{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="pb-0">
+      <div class="container narrow">
+        <span class="eyebrow">How it works</span>
+        <h2>Two layers: verified truth and field signal</h2>
+        <p>
+          The core is an accuracy-verified feature scoring matrix. Every claim about a
+          competitor's product is checked before it goes in, so reps never repeat a
+          myth to a prospect who knows better.
+        </p>
+        <p>
+          On top sits a <strong>"Field Intelligence"</strong> layer: unverified feedback
+          heard from prospects in live conversations. It's kept deliberately separate
+          and labelled as signal, not fact, so the matrix captures what the market is
+          saying without contaminating what we know to be true.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container narrow">
+        <span class="eyebrow">Why it matters</span>
+        <h2>Competitive knowledge that compounds</h2>
+        <p>
+          Most competitive intel lives in Slack threads and dies there. A living matrix
+          means every prospect conversation makes the whole team sharper. It's the same
+          system-building instinct behind the CQC dashboard, applied to knowledge
+          instead of data.
+        </p>
+        <div class="cta-row">
+          <a href="/case-studies/cqc-dashboard/" class="btn btn-ghost">Back to: CQC Research Dashboard →</a>
+          <a href="/enterprise/" class="btn btn-primary">Work with me</a>
+        </div>
+      </div>
+    </section>
+  </article>
+
+  <style>
+    .cs-hero { padding-top: 80px; padding-bottom: 0; }
+
+    .back {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+
+    .pb-0 { padding-bottom: 0; }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+  </style>
+</Base>
