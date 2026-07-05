@@ -8,8 +8,12 @@ const stack = ['Python', 'CQC API', 'Companies House API', 'Data matching'];
   title="Lead Enrichment Pipeline Case Study | Ishraq Alam"
   description="A Python pipeline combining the CQC and Companies House APIs to enrich ~180 care companies with decision-maker data."
 >
-  <article>
-    <section class="cs-hero">
+  <article class="case-study-detail">
+    <!-- Ambient glows -->
+    <div class="ambient-glow glow-1-csd"></div>
+    <div class="ambient-glow glow-2-csd"></div>
+
+    <section class="cs-hero relative">
       <div class="container narrow">
         <a href="/case-studies/" class="back">← All case studies</a>
         <span class="eyebrow animate-fade-in-up">Case study · In progress</span>
@@ -25,11 +29,31 @@ const stack = ['Python', 'CQC API', 'Companies House API', 'Data matching'];
       </div>
     </section>
 
-    <section class="pb-0">
+    <section class="mockup-section relative">
+      <div class="container">
+        <div class="mockup animate-fade-in delay-4" role="img" aria-label="Illustration of the Lead Enrichment script output">
+          <div class="mockup-titlebar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="mockup-title">python lead_enrichment_pipeline.py</span>
+          </div>
+          <div class="mockup-body terminal-body">
+            <div class="terminal-line"><span class="cmd">$</span> python lead_enrichment_pipeline.py --limit 180</div>
+            <div class="terminal-line success">[INFO] Querying CQC API for active residential providers... Done. (180 found)</div>
+            <div class="terminal-line success">[INFO] Matching accounts with Companies House API registry...</div>
+            <div class="terminal-line progress">[PROCESS] Processing matching algorithm... [■■■■■■■■■■■■■■■■■■■■] 100%</div>
+            <div class="terminal-line stats">✓ Successful joins: 177 / 180 providers mapped (98.3% accuracy)</div>
+            <div class="terminal-line stats">✓ Directors extracted: 342 active board members</div>
+            <div class="terminal-line success">[SUCCESS] Mapped direct output saved to target_accounts_enriched.csv</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-0 relative">
       <div class="container narrow">
         <span class="eyebrow">The problem</span>
         <h2>Two public datasets, zero clean joins</h2>
-        <p>
+        <p class="text-body">
           The CQC knows who provides care and how well. Companies House knows who owns
           and runs those companies. Neither, on its own, tells an SDR who to call.
           Matching the two by hand across ~180 target accounts would take weeks and be
@@ -38,11 +62,11 @@ const stack = ['Python', 'CQC API', 'Companies House API', 'Data matching'];
       </div>
     </section>
 
-    <section class="pb-0">
+    <section class="pb-0 relative">
       <div class="container narrow">
         <span class="eyebrow">The build</span>
         <h2>Automated extraction and matching</h2>
-        <p>
+        <p class="text-body">
           A Python script pulls provider records from the CQC API, resolves each
           provider to its registered company via the Companies House API, and extracts
           officers and organisational structure. The result: two disconnected public
@@ -51,11 +75,11 @@ const stack = ['Python', 'CQC API', 'Companies House API', 'Data matching'];
       </div>
     </section>
 
-    <section>
+    <section class="relative">
       <div class="container narrow">
         <span class="eyebrow">Status</span>
         <h2>In progress, and that's the point</h2>
-        <p>
+        <p class="text-body">
           This one is deliberately shown unfinished. It's an example of how I approach
           messy data problems: find the public sources, automate the joins, and hand the
           team something repeatable, not a one-off spreadsheet.
@@ -69,23 +93,132 @@ const stack = ['Python', 'CQC API', 'Companies House API', 'Data matching'];
   </article>
 
   <style>
-    .cs-hero { padding-top: 80px; padding-bottom: 0; }
+    .case-study-detail {
+      background: var(--bg);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .glow-1-csd {
+      width: 450px;
+      height: 450px;
+      background: var(--glow-1);
+      right: -10%;
+      top: 5%;
+    }
+
+    .glow-2-csd {
+      width: 350px;
+      height: 350px;
+      background: var(--glow-2);
+      left: -10%;
+      bottom: 20%;
+    }
+
+    .relative {
+      z-index: 1;
+      position: relative;
+    }
+
+    .cs-hero { padding-top: 120px; padding-bottom: 32px; }
 
     .back {
-      display: inline-block;
+      display: inline-flex;
       font-family: var(--font-display);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 600;
       color: var(--text-dim);
       margin-bottom: 24px;
+      transition: color 0.2s ease;
+    }
+
+    .back:hover {
+      color: var(--accent);
+      text-decoration: none;
     }
 
     .pb-0 { padding-bottom: 0; }
+
+    .mockup-section { padding: 40px 0 0; }
+
+    .mockup {
+      max-width: 860px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0f172a;
+      box-shadow: var(--shadow-premium);
+    }
+
+    .mockup-titlebar {
+      display: flex;
+      align-items: center;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: #1e293b;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .dot.red { background: #ef4444; }
+    .dot.yellow { background: #fbbf24; }
+    .dot.green { background: #34d399; }
+
+    .mockup-title {
+      margin-left: 10px;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #94a3b8;
+    }
+
+    .terminal-body {
+      padding: 24px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    .terminal-line {
+      margin-bottom: 8px;
+      color: #f1f5f9;
+    }
+
+    .terminal-line .cmd {
+      color: var(--accent);
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    .terminal-line.success {
+      color: #34d399;
+    }
+
+    .terminal-line.progress {
+      color: var(--accent-2);
+    }
+
+    .terminal-line.stats {
+      color: #fbbf24;
+    }
+
+    .text-body {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
 
     .cta-row {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 28px;
+      margin-top: 36px;
     }
   </style>
 </Base>

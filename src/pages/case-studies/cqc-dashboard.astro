@@ -33,8 +33,12 @@ const steps = [
   title="CQC Research Dashboard Case Study | Ishraq Alam"
   description="How a live CQC data dashboard cut care-provider research from minutes to seconds and became Nourish Care's proof-of-concept for AI-assisted prospecting."
 >
-  <article>
-    <section class="cs-hero">
+  <article class="case-study-detail">
+    <!-- Ambient glows -->
+    <div class="ambient-glow glow-1-csd"></div>
+    <div class="ambient-glow glow-2-csd"></div>
+
+    <section class="cs-hero relative">
       <div class="container narrow">
         <a href="/case-studies/" class="back">← All case studies</a>
         <span class="eyebrow animate-fade-in-up">Case study · Shipped &amp; in use company-wide</span>
@@ -50,11 +54,11 @@ const steps = [
       </div>
     </section>
 
-    <section class="mockup-section">
+    <section class="mockup-section relative">
       <div class="container">
         <div class="mockup animate-fade-in delay-4" role="img" aria-label="Illustration of the CQC Research Dashboard interface">
           <div class="mockup-titlebar">
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
             <span class="mockup-title">CQC Research Dashboard</span>
           </div>
           <div class="mockup-body">
@@ -78,25 +82,25 @@ const steps = [
       </div>
     </section>
 
-    <section class="pb-0">
+    <section class="pb-0 relative">
       <div class="container narrow">
         <span class="eyebrow">The problem</span>
         <h2>Research was the bottleneck, not effort</h2>
-        <p>
+        <p class="text-body">
           SDRs at Nourish needed fast, personalised research on CQC-registered care
           providers before every call and email. The raw data existed: the Care Quality
           Commission publishes ratings and inspection reports for every registered
           provider in England. But getting to it meant manual lookups: slow,
           inconsistent between reps, and impossible to do at the volume outbound requires.
         </p>
-        <p>
+        <p class="text-body">
           The result was a familiar SDR trade-off: personalise deeply and send less, or
           send more and sound generic. I wanted to delete the trade-off.
         </p>
       </div>
     </section>
 
-    <section class="pb-0">
+    <section class="pb-0 relative">
       <div class="container narrow">
         <span class="eyebrow">The build</span>
         <h2>From API to first line of outreach</h2>
@@ -104,7 +108,7 @@ const steps = [
       <div class="container">
         <div class="grid-2 steps">
           {steps.map((step, i) => (
-            <div class="card">
+            <div class="card step-card">
               <span class="step-num">{String(i + 1).padStart(2, '0')}</span>
               <h3>{step.title}</h3>
               <p>{step.body}</p>
@@ -114,17 +118,17 @@ const steps = [
       </div>
     </section>
 
-    <section>
+    <section class="outcome-section relative">
       <div class="container narrow">
         <span class="eyebrow">The outcome</span>
         <h2>Adopted company-wide, recognized by the CMO</h2>
-        <p>
+        <p class="text-body">
           The dashboard was adopted internally as Nourish's proof-of-concept for
           AI-assisted prospecting, used across the company, not just by me. It earned
-          recognition from the CMO, who named me an <strong>"AI Champion"</strong> for
+          recognition from the CMO, who named me an <strong class="highlight-text">"AI Champion"</strong> for
           the work.
         </p>
-        <p>
+        <p class="text-body">
           More important than the award: research that used to take minutes per provider
           now takes seconds, and every rep's outreach opens with something true and
           specific about the prospect.
@@ -138,19 +142,53 @@ const steps = [
   </article>
 
   <style>
-    .cs-hero { padding-top: 80px; padding-bottom: 32px; }
+    .case-study-detail {
+      background: var(--bg);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .glow-1-csd {
+      width: 450px;
+      height: 450px;
+      background: var(--glow-1);
+      right: -10%;
+      top: 5%;
+    }
+
+    .glow-2-csd {
+      width: 350px;
+      height: 350px;
+      background: var(--glow-2);
+      left: -10%;
+      bottom: 20%;
+    }
+
+    .relative {
+      z-index: 1;
+      position: relative;
+    }
+
+    .cs-hero { padding-top: 120px; padding-bottom: 32px; }
 
     .back {
-      display: inline-block;
+      display: inline-flex;
       font-family: var(--font-display);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 600;
       color: var(--text-dim);
       margin-bottom: 24px;
+      transition: color 0.2s ease;
+    }
+
+    .back:hover {
+      color: var(--accent);
+      text-decoration: none;
     }
 
     .pb-0 { padding-bottom: 0; }
 
-    .mockup-section { padding: 24px 0 0; }
+    .mockup-section { padding: 40px 0 0; }
 
     .mockup {
       max-width: 860px;
@@ -158,117 +196,151 @@ const steps = [
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
-      background: var(--bg-raise);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      background: var(--bg-card);
+      box-shadow: var(--shadow-premium);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
     }
 
     .mockup-titlebar {
       display: flex;
       align-items: center;
-      gap: 7px;
-      padding: 12px 16px;
+      padding: 14px 20px;
       border-bottom: 1px solid var(--border);
-      background: var(--bg-card);
+      background: var(--bg-raise);
     }
 
     .dot {
-      width: 11px;
-      height: 11px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      background: var(--border);
+      margin-right: 6px;
     }
+    .dot.red { background: #ef4444; }
+    .dot.yellow { background: #fbbf24; }
+    .dot.green { background: #34d399; }
 
     .mockup-title {
       margin-left: 10px;
       font-family: var(--font-display);
       font-size: 0.8rem;
+      font-weight: 600;
       color: var(--text-dim);
     }
 
-    .mockup-body { padding: 20px; }
+    .mockup-body { padding: 24px; }
 
     .mockup-search {
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 10px 14px;
+      padding: 12px 16px;
       color: var(--text-dim);
       font-size: 0.9rem;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+      font-family: var(--font-body);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
     }
 
     .mockup-tabs {
       display: flex;
-      gap: 6px;
-      margin-bottom: 16px;
+      gap: 8px;
+      margin-bottom: 20px;
       flex-wrap: wrap;
     }
 
     .tab {
       font-family: var(--font-display);
       font-size: 0.8rem;
-      font-weight: 500;
-      padding: 7px 14px;
+      font-weight: 600;
+      padding: 8px 16px;
       border-radius: 8px;
       color: var(--text-dim);
       border: 1px solid var(--border);
+      background: var(--bg);
+      transition: all 0.2s ease;
     }
 
     .tab.active {
       color: var(--accent);
       background: var(--accent-dim);
-      border-color: rgba(52, 211, 153, 0.3);
+      border-color: rgba(52, 211, 153, 0.35);
     }
 
     .mockup-panel {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      font-size: 0.92rem;
+      gap: 14px;
+      font-size: 0.95rem;
     }
 
     .mockup-row {
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 12px 14px;
+      padding: 14px 18px;
+      text-align: left;
     }
 
     .mockup-row .label {
       display: block;
       font-family: var(--font-display);
       font-size: 0.72rem;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      color: var(--accent-2);
       margin-bottom: 4px;
     }
 
-    .rating { color: #fbbf24; font-weight: 600; }
+    .rating { color: var(--warm); font-weight: 600; }
 
     .mockup-row.draft {
       border-color: rgba(52, 211, 153, 0.35);
       font-style: italic;
-      color: var(--text-dim);
+      color: var(--text);
+      background: var(--accent-dim);
     }
 
-    .steps { margin-top: 32px; }
+    .steps { margin-top: 40px; }
+
+    .step-card {
+      border-left: 3px solid var(--accent);
+    }
+
+    .step-card:nth-child(2) { border-left-color: var(--accent-2); }
+    .step-card:nth-child(3) { border-left-color: var(--warm); }
+    .step-card:nth-child(4) { border-left-color: var(--accent); }
 
     .step-num {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--accent);
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+    }
+
+    .text-body {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .highlight-text {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .outcome-section {
+      padding-top: 80px;
     }
 
     .cta-row {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 28px;
+      margin-top: 36px;
     }
   </style>
 </Base>

@@ -7,18 +7,24 @@ const studies = [
     tag: 'Shipped · In use company-wide',
     title: 'CQC Research Dashboard',
     body: 'A React/TypeScript app on live CQC data that cut care-provider research from minutes to seconds, adopted company-wide and recognized by the CMO with an "AI Champion" award.',
+    color: 'var(--accent)',
+    bgDim: 'var(--accent-dim)'
   },
   {
     href: '/case-studies/lead-enrichment/',
     tag: 'In progress',
     title: 'Lead Enrichment Pipeline',
     body: 'A Python pipeline combining the CQC API and Companies House API to enrich ~180 care companies with decision-maker and structure data for targeted outreach.',
+    color: 'var(--accent-2)',
+    bgDim: 'var(--accent-2-dim)'
   },
   {
     href: '/case-studies/competitive-intel/',
     tag: 'Living document',
     title: 'Competitive Intelligence Matrix',
     body: 'An accuracy-verified comparison of Nourish against 9+ care-sector competitors, layered with field intelligence from live prospect conversations.',
+    color: 'var(--warm)',
+    bgDim: 'var(--warm-dim)'
   },
 ];
 ---
@@ -27,21 +33,26 @@ const studies = [
   title="Case Studies | Ishraq Alam"
   description="Sales tools built by an SDR: a CQC research dashboard, a lead enrichment pipeline, and a competitive intelligence matrix."
 >
-  <section>
-    <div class="container">
+  <section class="case-studies-hero">
+    <!-- Ambient glows -->
+    <div class="ambient-glow glow-1-cs"></div>
+    <div class="ambient-glow glow-2-cs"></div>
+
+    <div class="container relative">
       <span class="eyebrow animate-fade-in-up">Case studies</span>
-      <h1 class="animate-fade-in-up delay-1">Sales problems, solved like an engineer</h1>
+      <h1 class="animate-fade-in-up delay-1">Sales problems, solved like <span class="text-gradient emerald">an engineer</span></h1>
       <p class="lede animate-fade-in-up delay-2">
         Each of these started as a bottleneck in my own pipeline. Instead of working
         around it, I built something that removed it for the whole team.
       </p>
+      
       <div class="grid-3 studies animate-fade-in-up delay-3">
         {studies.map((study) => (
-          <a href={study.href} class="card study-card">
-            <span class="chip">{study.tag}</span>
+          <a href={study.href} class="card study-card" style={`border-top: 4px solid ${study.color}`}>
+            <span class="chip chip-blue" style={`background: ${study.bgDim}; color: ${study.color}; border-color: ${study.bgDim}`}>{study.tag}</span>
             <h3>{study.title}</h3>
             <p>{study.body}</p>
-            <span class="read-more">Read the case study →</span>
+            <span class="read-more">Read the case study <span class="arrow">→</span></span>
           </a>
         ))}
       </div>
@@ -49,14 +60,42 @@ const studies = [
   </section>
 
   <style>
-    section { padding-top: 80px; }
+    .case-studies-hero {
+      padding: 120px 0 96px;
+      background: var(--bg);
+      overflow: hidden;
+    }
 
-    .studies { margin-top: 40px; }
+    .glow-1-cs {
+      width: 400px;
+      height: 400px;
+      background: var(--glow-1);
+      right: -10%;
+      top: 10%;
+    }
+
+    .glow-2-cs {
+      width: 300px;
+      height: 300px;
+      background: var(--glow-2);
+      left: -5%;
+      bottom: 5%;
+    }
+
+    .relative {
+      position: relative;
+      z-index: 1;
+    }
+
+    .studies {
+      margin-top: 56px;
+    }
 
     .study-card {
       display: flex;
       flex-direction: column;
       color: var(--text);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .study-card:hover {
@@ -65,10 +104,14 @@ const studies = [
 
     .study-card .chip {
       align-self: flex-start;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
-    .study-card p { color: var(--text-dim); }
+    .study-card p {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
 
     .read-more {
       margin-top: auto;
@@ -76,10 +119,16 @@ const studies = [
       font-size: 0.9rem;
       font-weight: 600;
       color: var(--accent);
-      transition: transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
 
-    .study-card:hover .read-more {
+    .arrow {
+      transition: transform 0.25s ease;
+    }
+
+    .study-card:hover .arrow {
       transform: translateX(4px);
     }
   </style>

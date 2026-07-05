@@ -126,23 +126,25 @@ const isActive = (href: string) =>
       .site-header {
         position: sticky;
         top: 0;
-        z-index: 10;
+        z-index: 50;
         background: var(--header-bg);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(var(--glass-blur));
+        -webkit-backdrop-filter: blur(var(--glass-blur));
         border-bottom: 1px solid var(--border);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.01);
       }
 
       .header-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        height: 64px;
+        height: 72px;
       }
 
       .header-right {
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 20px;
       }
 
       .theme-toggle {
@@ -150,11 +152,13 @@ const isActive = (href: string) =>
         border: 1px solid var(--border);
         color: var(--text-dim);
         cursor: pointer;
-        padding: 8px;
-        border-radius: 50%;
+        padding: 9px;
+        border-radius: 8px;
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.2s ease;
       }
 
       .theme-toggle:hover {
@@ -177,64 +181,103 @@ const isActive = (href: string) =>
       .wordmark {
         font-family: var(--font-display);
         font-weight: 700;
-        font-size: 1.05rem;
+        font-size: 1.15rem;
         color: var(--text);
+        letter-spacing: -0.02em;
+        display: flex;
+        align-items: center;
       }
 
-      .wordmark span { color: var(--accent); margin-left: 6px; }
-      .wordmark:hover { text-decoration: none; }
+      .wordmark span {
+        color: var(--accent);
+        margin-left: 4px;
+      }
 
-      nav { display: flex; gap: 4px; }
+      .wordmark:hover {
+        text-decoration: none;
+      }
+
+      nav {
+        display: flex;
+        gap: 6px;
+      }
 
       .nav-link {
         font-family: var(--font-display);
         font-size: 0.9rem;
-        font-weight: 500;
+        font-weight: 600;
         color: var(--text-dim);
-        padding: 8px 14px;
+        padding: 8px 16px;
         border-radius: 8px;
+        border: 1px solid transparent;
+        transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .nav-link:hover {
         color: var(--text);
+        background: var(--bg-raise);
         text-decoration: none;
       }
 
       .nav-link.active {
         color: var(--accent);
         background: var(--accent-dim);
+        border-color: rgba(14, 143, 107, 0.12);
+      }
+
+      .dark .nav-link.active {
+        border-color: rgba(52, 211, 153, 0.15);
       }
 
       .site-footer {
-        background: var(--bg);
+        background: var(--bg-raise);
         border-top: 1px solid var(--border);
-        padding: 40px 0;
-        margin-top: 40px;
+        padding: 64px 0;
+        margin-top: 96px;
       }
 
       .footer-inner {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        gap: 24px;
+        gap: 32px;
         flex-wrap: wrap;
         color: var(--text-dim);
         font-size: 0.95rem;
       }
 
-      .footer-inner p { margin: 4px 0 0; }
+      .footer-inner strong {
+        color: var(--text);
+        font-size: 1.1rem;
+      }
+
+      .footer-inner p {
+        margin: 6px 0 0;
+        font-size: 0.9rem;
+      }
 
       .footer-links {
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 8px;
         text-align: right;
       }
 
+      .footer-links a {
+        color: var(--text-dim);
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent);
+      }
+
       @media (max-width: 640px) {
-        .header-inner { flex-direction: column; height: auto; padding-top: 12px; padding-bottom: 12px; gap: 12px; }
+        .header-inner { flex-direction: column; height: auto; padding-top: 16px; padding-bottom: 16px; gap: 16px; }
         .header-right { width: 100%; justify-content: space-between; }
-        .footer-links { text-align: left; }
+        .footer-inner { flex-direction: column; align-items: stretch; }
+        .footer-links { text-align: left; margin-top: 12px; }
       }
     </style>
 

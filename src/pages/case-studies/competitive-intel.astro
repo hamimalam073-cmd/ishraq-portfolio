@@ -8,8 +8,12 @@ const stack = ['Feature scoring', 'Accuracy verification', 'Field intelligence']
   title="Competitive Intelligence Matrix Case Study | Ishraq Alam"
   description="A living, accuracy-verified comparison of Nourish against 9+ care-sector competitors with a field-intelligence layer."
 >
-  <article>
-    <section class="cs-hero">
+  <article class="case-study-detail">
+    <!-- Ambient glows -->
+    <div class="ambient-glow glow-1-csd"></div>
+    <div class="ambient-glow glow-2-csd"></div>
+
+    <section class="cs-hero relative">
       <div class="container narrow">
         <a href="/case-studies/" class="back">← All case studies</a>
         <span class="eyebrow animate-fade-in-up">Case study · Living document</span>
@@ -25,17 +29,62 @@ const stack = ['Feature scoring', 'Accuracy verification', 'Field intelligence']
       </div>
     </section>
 
-    <section class="pb-0">
+    <section class="mockup-section relative">
+      <div class="container">
+        <div class="mockup animate-fade-in delay-4" role="img" aria-label="Illustration of the Competitive Intelligence Matrix interface">
+          <div class="mockup-titlebar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <span class="mockup-title">competitive_intel_matrix.xlsx</span>
+          </div>
+          <div class="mockup-body matrix-body">
+            <div class="table-container">
+              <table class="matrix-table">
+                <thead>
+                  <tr>
+                    <th>Core Care Feature</th>
+                    <th class="active-col">Nourish Care</th>
+                    <th>Competitor B (Birdie)</th>
+                    <th>Competitor C (PCS)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="feature-name">Offline Mode Execution</td>
+                    <td class="check active-col">✓ Fully Offline</td>
+                    <td class="cross">✗ Partial Sync</td>
+                    <td class="cross">✗ Online Only</td>
+                  </tr>
+                  <tr>
+                    <td class="feature-name">Custom Care Templates</td>
+                    <td class="check active-col">✓ Drag &amp; Drop</td>
+                    <td class="check">✓ Standard Only</td>
+                    <td class="cross">✗ Fixed Files</td>
+                  </tr>
+                  <tr>
+                    <td class="feature-name">CQC Data Pre-matching</td>
+                    <td class="check active-col">✓ Automated API</td>
+                    <td class="cross">✗ No Matching</td>
+                    <td class="cross">✗ Manual Input</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-0 relative">
       <div class="container narrow">
         <span class="eyebrow">How it works</span>
         <h2>Two layers: verified truth and field signal</h2>
-        <p>
+        <p class="text-body">
           The core is an accuracy-verified feature scoring matrix. Every claim about a
           competitor's product is checked before it goes in, so reps never repeat a
           myth to a prospect who knows better.
         </p>
-        <p>
-          On top sits a <strong>"Field Intelligence"</strong> layer: unverified feedback
+        <p class="text-body">
+          On top sits a <strong class="highlight-text">"Field Intelligence"</strong> layer: unverified feedback
           heard from prospects in live conversations. It's kept deliberately separate
           and labelled as signal, not fact, so the matrix captures what the market is
           saying without contaminating what we know to be true.
@@ -43,11 +92,11 @@ const stack = ['Feature scoring', 'Accuracy verification', 'Field intelligence']
       </div>
     </section>
 
-    <section>
+    <section class="relative">
       <div class="container narrow">
         <span class="eyebrow">Why it matters</span>
         <h2>Competitive knowledge that compounds</h2>
-        <p>
+        <p class="text-body">
           Most competitive intel lives in Slack threads and dies there. A living matrix
           means every prospect conversation makes the whole team sharper. It's the same
           system-building instinct behind the CQC dashboard, applied to knowledge
@@ -62,23 +111,162 @@ const stack = ['Feature scoring', 'Accuracy verification', 'Field intelligence']
   </article>
 
   <style>
-    .cs-hero { padding-top: 80px; padding-bottom: 0; }
+    .case-study-detail {
+      background: var(--bg);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .glow-1-csd {
+      width: 450px;
+      height: 450px;
+      background: var(--glow-1);
+      right: -10%;
+      top: 5%;
+    }
+
+    .glow-2-csd {
+      width: 350px;
+      height: 350px;
+      background: var(--glow-2);
+      left: -10%;
+      bottom: 20%;
+    }
+
+    .relative {
+      z-index: 1;
+      position: relative;
+    }
+
+    .cs-hero { padding-top: 120px; padding-bottom: 32px; }
 
     .back {
-      display: inline-block;
+      display: inline-flex;
       font-family: var(--font-display);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 600;
       color: var(--text-dim);
       margin-bottom: 24px;
+      transition: color 0.2s ease;
+    }
+
+    .back:hover {
+      color: var(--accent);
+      text-decoration: none;
     }
 
     .pb-0 { padding-bottom: 0; }
+
+    .mockup-section { padding: 40px 0 0; }
+
+    .mockup {
+      max-width: 860px;
+      margin: 0 auto;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--bg-card);
+      box-shadow: var(--shadow-premium);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+    }
+
+    .mockup-titlebar {
+      display: flex;
+      align-items: center;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-raise);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .dot.red { background: #ef4444; }
+    .dot.yellow { background: #fbbf24; }
+    .dot.green { background: #34d399; }
+
+    .mockup-title {
+      margin-left: 10px;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .matrix-body {
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    .matrix-table th,
+    .matrix-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .matrix-table th {
+      font-family: var(--font-display);
+      font-weight: 700;
+      background: var(--bg-raise);
+      color: var(--text);
+    }
+
+    .matrix-table td.active-col,
+    .matrix-table th.active-col {
+      background: var(--accent-dim);
+      border-left: 1px solid rgba(52, 211, 153, 0.15);
+      border-right: 1px solid rgba(52, 211, 153, 0.15);
+    }
+
+    .feature-name {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .matrix-table td.check {
+      color: #10b981;
+      font-weight: 600;
+    }
+
+    .matrix-table td.cross {
+      color: #ef4444;
+      font-weight: 500;
+    }
+
+    .text-body {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .highlight-text {
+      color: var(--accent);
+      font-weight: 600;
+    }
 
     .cta-row {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 28px;
+      margin-top: 36px;
     }
   </style>
 </Base>

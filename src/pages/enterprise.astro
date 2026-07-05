@@ -4,20 +4,32 @@ import EnterpriseForm from '../components/EnterpriseForm';
 
 const verticals = [
   {
-    title: 'Insurance',
-    body: 'High-volume outbound campaigns navigating regulated, compliance-heavy sales cycles.',
+    title: 'Insurance Campaigns',
+    body: 'High-volume outbound telemarketing campaigns navigating regulated, compliance-heavy sales cycles with extreme precision.',
+    iconPath: 'M3 11h18v11H3zm4 0V7a5 5 0 0 1 10 0v4',
+    color: 'var(--accent)',
+    bgDim: 'var(--accent-dim)'
   },
   {
-    title: 'Home Improvement',
-    body: 'Appointment-setting campaigns converting cold leads into qualified in-home consultations.',
+    title: 'Home Improvement Leads',
+    body: 'Targeted appointment-setting campaigns converting cold homeowner lists into qualified in-home sales consultations.',
+    iconPath: 'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10',
+    color: 'var(--warm)',
+    bgDim: 'var(--warm-dim)'
   },
   {
-    title: 'SaaS',
-    body: 'Client campaign work with Appcast, a recruitment marketing SaaS platform.',
+    title: 'B2B SaaS Growth',
+    body: 'Strategic client campaign work for high-growth tech firms, including Appcast, a leading recruitment marketing SaaS platform.',
+    iconPath: 'M12 2L2 7l10 5 10-5-10-5z M2 17l10 5 10-5 M2 12l10 5 10-5',
+    color: 'var(--accent-2)',
+    bgDim: 'var(--accent-2-dim)'
   },
   {
     title: 'IT Procurement',
-    body: 'Procurement telemarketing for AMS Networks, contributing to campaigns that helped close million-dollar IT contracts.',
+    body: 'Procurement telemarketing for AMS Networks, contributing directly to campaigns behind million-dollar enterprise IT closes.',
+    iconPath: 'M2 2h20v8H2zm0 12h20v8H2z M6 6h.01 M6 18h.01',
+    color: 'var(--accent)',
+    bgDim: 'var(--accent-dim)'
   },
 ];
 ---
@@ -26,18 +38,30 @@ const verticals = [
   title="Enterprise & B2B Campaigns | Ishraq Alam"
   description="Outbound campaign experience across insurance, home improvement, SaaS, and IT procurement, including campaigns behind six- and seven-figure closes."
 >
-  <section>
-    <div class="container">
+  <section class="enterprise-hero">
+    <!-- Ambient glows -->
+    <div class="ambient-glow glow-1-ent"></div>
+    <div class="ambient-glow glow-2-ent"></div>
+
+    <div class="container relative">
       <span class="eyebrow animate-fade-in-up">Enterprise &amp; B2B campaigns</span>
       <h1 class="animate-fade-in-up delay-1">Beyond SMB outreach: I've run the calls that close six and seven figures.</h1>
       <p class="lede animate-fade-in-up delay-2">
         Before care-tech, I spent years in remote B2B telemarketing for US and Canadian
         companies. Four verticals, four very different sales motions.
       </p>
+      
       <div class="grid-2 verticals animate-fade-in-up delay-3">
         {verticals.map((v) => (
-          <div class="card">
-            <h3>{v.title}</h3>
+          <div class="card vertical-card" style={`border-top: 4px solid ${v.color}`}>
+            <div class="vertical-header">
+              <div class="vertical-icon-wrap" style={`border-color: ${v.color}; background: ${v.bgDim}`}>
+                <svg class="vertical-svg" viewBox="0 0 24 24" fill="none" stroke={v.color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d={v.iconPath} />
+                </svg>
+              </div>
+              <h3>{v.title}</h3>
+            </div>
             <p>{v.body}</p>
           </div>
         ))}
@@ -45,29 +69,105 @@ const verticals = [
     </div>
   </section>
 
-  <section class="inquiry">
-    <div class="container narrow">
+  <section class="inquiry relative">
+    <div class="container narrow relative">
       <span class="eyebrow">Enterprise inquiry</span>
-      <h2>Have a campaign in mind?</h2>
+      <h2>Have a B2B campaign in mind?</h2>
       <p class="lede">
-        Tell me about the market, the offer, and the volume. I'll tell you honestly
-        whether I'm the right person to run it.
+        Tell me about your target market, the offer model, and the projected dial volume. I'll review and respond honestly with an execution strategy.
       </p>
-      <div class="card form-card">
+      
+      <div class="card form-card animate-fade-in-up">
         <EnterpriseForm client:load />
       </div>
     </div>
   </section>
 
   <style>
-    section:first-of-type { padding-top: 80px; }
+    .enterprise-hero {
+      padding: 120px 0 80px;
+      background: var(--bg);
+      overflow: hidden;
+    }
 
-    .verticals { margin-top: 40px; }
+    .glow-1-ent {
+      width: 450px;
+      height: 450px;
+      background: var(--glow-1);
+      right: -10%;
+      top: 10%;
+    }
 
-    .verticals .card p { color: var(--text-dim); margin-bottom: 0; }
+    .glow-2-ent {
+      width: 350px;
+      height: 350px;
+      background: var(--glow-2);
+      left: -10%;
+      bottom: -10%;
+    }
 
-    .inquiry { border-top: 1px solid var(--border); }
+    .relative {
+      position: relative;
+      z-index: 1;
+    }
 
-    .form-card { margin-top: 24px; }
+    .verticals { margin-top: 56px; }
+
+    .vertical-card {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .vertical-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .vertical-header h3 {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+
+    .vertical-icon-wrap {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1.5px solid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .vertical-svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .vertical-card p {
+      color: var(--text-dim);
+      margin-bottom: 0;
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    .inquiry {
+      border-top: 1px solid var(--border);
+      padding: 96px 0;
+      background: var(--bg-raise);
+    }
+
+    .form-card {
+      margin-top: 36px;
+      padding: 40px;
+      box-shadow: var(--shadow-premium);
+    }
+
+    @media (max-width: 640px) {
+      .form-card {
+        padding: 32px 20px;
+      }
+    }
   </style>
 </Base>
