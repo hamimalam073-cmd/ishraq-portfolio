@@ -149,6 +149,12 @@ const stack = ['Python', 'CQC API', 'Companies House API', 'Data matching'];
       overflow: hidden;
       background: #0f172a;
       box-shadow: var(--shadow-premium);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mockup:hover {
+      transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) translateY(-4px);
+      box-shadow: var(--shadow-premium), var(--shadow-glow);
     }
 
     .mockup-titlebar {

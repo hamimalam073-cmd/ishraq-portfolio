@@ -483,10 +483,11 @@ const caseStudies = [
 
     .hero-visual {
       position: relative;
-      height: 340px;
+      height: 360px;
       display: flex;
       align-items: center;
       justify-content: center;
+      perspective: 1200px;
     }
 
     @media (max-width: 960px) {
@@ -504,7 +505,7 @@ const caseStudies = [
       }
     }
 
-    /* 3D Mockup Layers */
+    /* 3D Mockup Layers with Real Perspective & Rotations */
     .layered-container {
       position: relative;
       width: 100%;
@@ -513,6 +514,13 @@ const caseStudies = [
       display: flex;
       align-items: center;
       justify-content: center;
+      transform: rotateX(12deg) rotateY(-16deg) rotateZ(1deg);
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .layered-container:hover {
+      transform: rotateX(6deg) rotateY(-6deg) rotateZ(0deg);
     }
 
     .mockup-card {
@@ -529,7 +537,7 @@ const caseStudies = [
     }
 
     .mockup-card:hover {
-      transform: translateY(-8px) scale(1.03) !important;
+      transform: translateZ(60px) scale(1.05) !important;
       z-index: 10 !important;
       border-color: var(--border-glow);
       box-shadow: var(--shadow-premium), var(--shadow-glow);
@@ -538,32 +546,47 @@ const caseStudies = [
     .card-cqc {
       bottom: 20px;
       left: -20px;
-      transform: rotate(-4deg) translateY(0);
+      transform: translateZ(10px) rotate(-4deg);
       z-index: 1;
     }
 
     .card-enrich {
       top: 10px;
       right: -20px;
-      transform: rotate(3deg) translateY(0);
+      transform: translateZ(25px) rotate(3deg);
       z-index: 2;
     }
 
     .card-ai {
       top: 95px;
       left: 30px;
-      transform: rotate(-1deg) scale(1.02);
+      transform: translateZ(45px) rotate(-1deg) scale(1.02);
       z-index: 3;
       border-color: var(--border-glow);
     }
 
+    @media (max-width: 960px) {
+      .layered-container {
+        transform: rotateX(10deg) rotateY(-10deg) rotateZ(1deg) scale(0.9);
+      }
+    }
+
     @media (max-width: 480px) {
+      .layered-container {
+        transform: rotateX(8deg) rotateY(-8deg) rotateZ(1deg) scale(0.78);
+      }
       .mockup-card {
-        width: 270px;
+        width: 280px;
       }
       .card-cqc { left: -10px; }
       .card-enrich { right: -10px; }
       .card-ai { left: 10px; }
+    }
+
+    @media (max-width: 380px) {
+      .layered-container {
+        transform: rotateX(6deg) rotateY(-6deg) rotateZ(1deg) scale(0.68);
+      }
     }
 
     /* Mockup header & bodies */
